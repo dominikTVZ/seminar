@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='user.css') }}"/>
+    <title>Stranica s slikom</title>
+</head>
+<body>
+    <div class="container">
+        <div class="side">
+            <h2>{{ime}}</h2>
+            <h2>{{prezime}}</h2>
+        </div>
+        <div class="main">
+            <img src="{{ url_for('static', filename='slike/motor.png') }}" alt="User" width="100px">
+        </div>
+    </div>
+</body>
+</html>

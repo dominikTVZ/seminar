@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}"/>
+        <title>{{ naslov }}</title>
+        
+    </head>
+        <body>
+            <div class="kontenjer">
+                <div class="header">
+                    <div class="header-lijevo">
+                        <p>{{ username }}</p>
+                        {% if username == 'Dlucic' %}                   
+                            <img src="{{ url_for('static', filename='slike/joker.png') }}" alt="User" width="100px">
+                        {% elif username == 'Zskvorc' %}
+                            <img src="{{ url_for('static', filename='slike/batman.png') }}" alt="User" width="100px">
+                        {% endif %}
+                       
+                    </div>
+        
+                <div class="header-desno">
+                <img src="{{ url_for('static', filename='slike/icon.png') }}" alt="Kucica" width="100px">
+                </div>
+            </div>
+            <nav>
+                <a href="{{ url_for('logout') }}">Logout</a>
+                <a href="?id=1">Temperatura</a>
+            </nav>
+            <main>
+                <table>
+                    <thead>
+                        <th>Datum</th>                       
+                        <th>{{ tip }}</th>
+                        <th><a href="{{ url_for('check_user_spec') }}">O korisniku</a></th>
+                    </thead>  
+ <tbody>
+    {% for podatak in podaci %}
+        {% if podatak[0] %}
+            <tr>
+                <td>{{ podatak[1] }}</td>
+                <td>{{ podatak[2] }}</td>
+                {% if id_ovlasti == 1 %}
+                    <td>                                                   
+                        <form action="{{ url_for('delete', id_retka=podatak[0]) }}" method="POST">
+                            <input type="submit" value="Obriši" class="button">
+                        </form>
+                    </td> 
+                {% endif %}                                            
+            </tr>
+        {% endif %}
+    {% endfor %}                 
+</tbody>        
+                </table>
+            </main>
+            </div>
+        </div>
+    </body>
+    </html>

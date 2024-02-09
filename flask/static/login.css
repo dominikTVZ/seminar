@@ -1,0 +1,22 @@
+body{
+    background-image: url(/static/slike/vatra.png);
+}
+
+
+.input-box{
+    background-color: rgba(127, 197, 255, 0.747);
+    height: 120px;
+    text-align: center;
+    padding-top: 50px;
+    font-style: italic;
+    margin-top: 80px;
+    
+
+}
+
+.login {
+    width: 100px;
+    background-color: rgb(97, 197, 97);
+    border-radius: 5px;
+    
+}

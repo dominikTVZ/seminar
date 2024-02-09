@@ -1,0 +1,24 @@
+body {
+    background-color: #3498dbb2; /* Plava boja pozadine */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Postavljanje visine na cijelu visinu prozora */
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+.side {
+    color: white;
+    padding: 20px;
+}
+
+.main img {
+    width: 300px; /* Prilagodite veličinu slike po potrebi */
+    height: auto;
+}
