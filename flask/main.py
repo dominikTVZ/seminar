@@ -120,16 +120,7 @@ def check_user_spec():
     
 
 
-'''@app.get('/probaj')
-def get_temperatura():
-    print("Provjerene temperatura: ")
-    upit =  render_template('select_temp.sql')
-    odgovor = g.cursor.execute(upit)
-    redci = g.cursor.fetchall()
-    print("Ovo je odgovor:")
-    print(redci)
-    return redci'''
+
 
 
 app.run(host="0.0.0.0", port=80)
-
