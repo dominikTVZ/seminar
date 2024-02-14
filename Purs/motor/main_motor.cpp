@@ -11,8 +11,9 @@ const int FREQUENCY = 50;
 void startMotor();
 
 // WiFi
-const char* SSID = "konekcijski point";
-const char* PASSWORD = "senna1960";
+const char* SSID = "SSID";
+const char* PASSWORD = "PASSWORD";
+
 
 // HTTP
 const char *serverName = "http://192.168.0.12/temperatura";
