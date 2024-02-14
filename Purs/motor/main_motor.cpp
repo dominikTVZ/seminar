@@ -49,7 +49,7 @@ void loop() {
         // Provjera temperature i izvršavanje odgovarajuće akcije
         if (temperatura > 13) {
             // Pokretanje motora
-            Serial.print("Pedercina sam i ne zelim pokrenut motor");
+           
             startMotor();
         }
     }
