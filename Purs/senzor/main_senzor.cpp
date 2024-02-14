@@ -3,12 +3,8 @@
 #include <HTTPClient.h>
 #include <ArduinoJson.h>
 #include "temperature_sensor.h"
-#include "motor_controller.h"
 
-const int PWM_CHANNEL = 13;
-const int PWM_PIN = 12;
-const int RESOLUTION = 8;
-const int FREQUENCY = 50;
+
 
 // WiFi
 const char* SSID = "konekcijski point";
@@ -35,12 +31,7 @@ void loop() {
   // Mjerenje temperature
   float temperature = measureTemperature();
 
-  // Provjera temperature
-  if (temperature > 14.0) {
-    
-    startMotor();
-  };
-
+ 
   // Postavljanje temperature u JSON dokument
   StaticJsonDocument<200> doc;
   doc["temperatura"] = temperature;

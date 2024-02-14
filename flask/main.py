@@ -1,6 +1,7 @@
-from flask import Flask, url_for, redirect, request, make_response, render_template, session, g
+from flask import Flask, url_for, redirect, request, make_response, render_template, session, g, jsonify
 import jinja2
 import MySQLdb
+import requests
 
 app = Flask("Prvi program")
 app.secret_key = '_de5jRRR83x'
@@ -80,19 +81,34 @@ def index():
         return response, 200
 
 # dodavanje temperature
-@app.post('/temperatura')
-def post_temperatura():
-    global temperatura        
-    response = make_response()
-    if request.json.get('temperatura') is not None:
-        upit = render_template('dodaj_u_bazu.sql', value = request.json.get('temperatura'))
-        g.cursor.execute(upit)
-        response.data = 'Uspjesno ste postavili temperaturu'
-        response.status_code = 201
-    else:
-        response.data = 'Niste postavili temperaturu'
-        response.status_code = 404
-    return response
+
+# Dodavanje i dohvaćanje temperature
+@app.route('/temperatura', methods=['GET', 'POST'])
+def temperatura():
+    global temperatura
+    if request.method == 'POST':
+        print("Uso sam u POST")        
+        response = make_response()
+        if request.json.get('temperatura') is not None:
+                upit = render_template('dodaj_u_bazu.sql', value = request.json.get('temperatura'))
+                g.cursor.execute(upit)
+                response.data = 'Uspjesno ste postavili temperaturu'
+                response.status_code = 201
+        else:
+            response.data = 'Niste postavili temperaturu'
+            response.status_code = 404
+        return response
+
+    if request.method == 'GET':
+        print("Uso sam u GET")
+        # Dohvaćanje zadnje temperature iz baze podataka
+        query = render_template('fetch_latest_temp.sql')
+        g.cursor.execute(query)
+        temperatura = g.cursor.fetchone()[0]
+        print(temperatura)
+        print(jsonify({"temperatura": temperatura}))  # Vrijednost temperature je prvi stupac rezultata
+        return jsonify({"temperatura": temperatura})
+
 
 
 # brisanje temperature
