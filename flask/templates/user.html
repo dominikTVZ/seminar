@@ -2,20 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='user.css') }}"/>
-    <title>Stranica s slikom</title>
+    <title>Interaktivni graf</title>
+    <!-- Stilovi za prikaz grafa -->
+    <style>
+        #graph {
+            width: 800px;
+            height: 600px;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <div class="side">
-            <h2>{{ime}}</h2>
-            <h2>{{prezime}}</h2>
-        </div>
-        <div class="main">
-            <img src="{{ url_for('static', filename='slike/motor.png') }}" alt="User" width="100px">
-        </div>
+    <!-- Mjesto gdje će se prikazati graf -->
+    <div id="graph">
+        <!-- Ovdje će se umetnuti HTML kod za graf -->
+        {{ graph_html|safe }}
     </div>
 </body>
 </html>

@@ -8,11 +8,15 @@ const int PWM_CHANNEL = 13;
 const int PWM_PIN = 12;
 const int RESOLUTION = 8;
 const int FREQUENCY = 50;
+
 void startMotor();
+bool motorRunning = false;
+void stopMotor();
 
 // WiFi
-const char* SSID = "SSID";
-const char* PASSWORD = "PASSWORD";
+const char* SSID = "konekcijski point";
+const char* PASSWORD = "senna1960";
+
 
 
 // HTTP
@@ -79,9 +83,10 @@ void startMotor() {
     ledcAttachPin(PWM_PIN, PWM_CHANNEL);
     
     // Pokretanje elektromotora s ventilatorom
-    for (int i = 0; i < 255; i++) {
+    for (int i = 0; i < 120; i+=2) {
         ledcWrite(PWM_CHANNEL, i);
-        delay(1000);
+
+        delay(100);
     }
 }
 

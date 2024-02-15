@@ -34,28 +34,28 @@
                     <thead>
                         <th>Datum</th>                       
                         <th>{{ tip }}</th>
-                        <th><a href="{{ url_for('check_user_spec') }}">O korisniku</a></th>
+                        <th><a href="{{ url_for('check_user_spec') }}">Statistika</a></th>
                     </thead>  
- <tbody>
-    {% for podatak in podaci %}
-        {% if podatak[0] %}
-            <tr>
-                <td>{{ podatak[1] }}</td>
-                <td>{{ podatak[2] }}</td>
-                {% if id_ovlasti == 1 %}
-                    <td>                                                   
-                        <form action="{{ url_for('delete', id_retka=podatak[0]) }}" method="POST">
-                            <input type="submit" value="Obriši" class="button">
-                        </form>
-                    </td> 
-                {% endif %}                                            
-            </tr>
-        {% endif %}
-    {% endfor %}                 
-</tbody>        
+                            <tbody>
+                                {% for podatak in podaci %}
+                                    {% if podatak[0] %}
+                                        <tr>
+                                            <td>{{ podatak[1] }}</td>
+                                            <td>{{ podatak[2] }}</td>
+                                            {% if id_ovlasti == 1 %}
+                                                <td>                                                   
+                                                    <form action="{{ url_for('delete', id_retka=podatak[0]) }}" method="POST">
+                                                        <input type="submit" value="Obriši" class="button">
+                                                    </form>
+                                                </td> 
+                                            {% endif %}                                            
+                                        </tr>
+                                    {% endif %}
+                                {% endfor %}                 
+                            </tbody>        
                 </table>
             </main>
             </div>
         </div>
-    </body>
+        </body>
     </html>

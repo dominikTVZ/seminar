@@ -2,6 +2,8 @@ from flask import Flask, url_for, redirect, request, make_response, render_templ
 import jinja2
 import MySQLdb
 import requests
+import plotly.express as px
+
 
 app = Flask("Prvi program")
 app.secret_key = '_de5jRRR83x'
@@ -125,15 +127,23 @@ def check_user_spec():
     id_ovlasti = session.get('id_ovlasti')
     ime = session.get('ime')
     prezime = session.get('prezime')
+    upit  = render_template('graf.sql')
+    odgovor = g.cursor.execute(upit)
+    rows = g.cursor.fetchall()
+    print(rows)
+    # Izrada podataka za graf
+    x = [row[0] for row in rows]  # Vrijeme mjerenja
+    y = [row[1] for row in rows]  # Temperatura
+    data = {'x': x, 'y': y}
 
-    if ime and prezime:
-        return render_template('user.html', id_ovlasti=id_ovlasti, ime=ime, prezime=prezime)
-    else:
-        # Ako ime ili prezime nisu postavljeni u sesiji, možete preusmjeriti korisnika ili prikazati odgovarajuću poruku
-        return "Niste prijavljeni ili nisu postavljeni podaci o korisniku u sesiji."
+    # Izrada grafa
+    fig = px.line(data, x='x', y='y', title='Temperature')
 
-    #return redirect(url_for('post_temperatura'))
-    
+    # Spremanje grafa u HTML string
+    graph_html = fig.to_html(full_html=False)
+
+    # Renderiranje HTML-a s grafovima
+    return render_template('user.html', graph_html=graph_html)
 
 
 
