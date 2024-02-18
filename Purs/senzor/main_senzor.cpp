@@ -2,17 +2,17 @@
 #include <WiFi.h>
 #include <HTTPClient.h>
 #include <ArduinoJson.h>
-#include "temperature_sensor.h"
 
 
+float measureTemperature();
 
 // WiFi
-const char* SSID = "SSID";
-const char* PASSWORD = "PASSWORD";
+const char* SSID = "konekcijski point";
+const char* PASSWORD = "senna1960";
 
 
 // HTTP
-const char *serverName = "http://192.168.0.12/temperatura";
+const char *serverName = "http://192.168.0.13/temperatura";
 HTTPClient http;
 
 void setup() {
@@ -55,4 +55,11 @@ void loop() {
 
   // Odmor
   delay(5000);
+}
+
+
+float measureTemperature() {
+  int sensorValue = analogRead(32); // Čitanje analognog očitanja s pina 32
+  float voltage = sensorValue * (5.0 / 4095.0); // Pretvaranje ADC vrijednosti u napon (u V)
+  return voltage * 100.0; // Pretvaranje napona u temperaturu (u °C)
 }

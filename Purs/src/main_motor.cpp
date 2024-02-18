@@ -20,7 +20,7 @@ const char* PASSWORD = "senna1960";
 
 
 // HTTP
-const char *serverName = "http://192.168.0.12/temperatura";
+const char *serverName = "http://192.168.0.13/temperatura";
 HTTPClient http;
 
 void setup() {
@@ -89,5 +89,4 @@ void startMotor() {
         delay(100);
     }
 }
-
 
