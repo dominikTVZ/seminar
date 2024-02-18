@@ -1,5 +1,9 @@
 body{
-    background-image: url(/static/images/background.png);
+    background-image: url(/static/slike/pozadina.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+ 
 }
 
 .kontenjer{
@@ -7,7 +11,7 @@ body{
     margin-right: 2px;
     margin-left: 2px;
     margin-bottom: 20px;
-    background-color: rgb(0, 128, 100);
+    background-color: rgba(0, 55, 128, 0.788);
     border-top: 2px solid #64485C;
     border-radius: 10px;
     
@@ -20,9 +24,9 @@ body{
 
 
 .header-lijevo{
+    color:white;
     padding: 20px;
     text-align: left;
-    color: #64485C;
     font-weight: bold;
     display: flex; 
     align-items: center;
@@ -36,20 +40,23 @@ body{
 }
 
 
-.nav {
+nav {
+
     display: flex;
     flex-direction: row;
-    background-color: #3A454D;
+    background-color:rgba(119, 128, 0, 0.788);
     text-decoration: none;
     border-radius: 10px;
+   
     
 }
 
-.nav a:first-child {
+nav a:first-child {
     margin-left: 20px;
+    
 }
 
-.nav a {
+nav a {
     text-decoration: none;
     color: white;
     padding: 20px;

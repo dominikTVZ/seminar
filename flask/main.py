@@ -131,21 +131,20 @@ def check_user_spec():
     odgovor = g.cursor.execute(upit)
     rows = g.cursor.fetchall()
     print(rows)
+    
     # Izrada podataka za graf
     x = [row[0] for row in rows]  # Vrijeme mjerenja
-    y = [row[1] for row in rows]  # Temperatura
-    data = {'x': x, 'y': y}
-
+    y = [row[1] for row in rows]  # Temperatura   
+    data = {'Vrijeme mjerenja': x, 'Temperatura[C°]': y}
+    
     # Izrada grafa
-    fig = px.line(data, x='x', y='y', title='Temperature')
+    fig = px.line(data, x='Vrijeme mjerenja', y='Temperatura[C°]', title='Temperature')
 
     # Spremanje grafa u HTML string
     graph_html = fig.to_html(full_html=False)
-
     # Renderiranje HTML-a s grafovima
-    return render_template('user.html', graph_html=graph_html)
 
-
+    return render_template('user.html', graph_html=graph_html, id_ovlasti = id_ovlasti)
 
 
 

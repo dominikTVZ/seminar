@@ -1,16 +1,32 @@
 body {
-    background-color: #3498dbb2; /* Plava boja pozadine */
+
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh; /* Postavljanje visine na cijelu visinu prozora */
+    background-image: url(/static/slike/pozadina.png);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
-.container {
+.link {
+    
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 20px;
+    
+}
+.flex-container {
     display: flex;
     flex-direction: row;
+    padding: 20px;;
+    
+}
+a {
+    color: white;
 }
 
 .side {
@@ -21,4 +37,36 @@ body {
 .main img {
     width: 300px; /* Prilagodite veličinu slike po potrebi */
     height: auto;
+}
+
+
+.show-table{
+    display: block;
+    margin-bottom: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-right: 20px;
+}
+table th, table td{
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+
+table th{
+    background-color: #f2f2f2;
+    text-align: left;
+}
+
+table td{
+    background-color: white;
+    color: black;
 }

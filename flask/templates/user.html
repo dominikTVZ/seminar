@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Interaktivni graf</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='user.css') }}"/>
     <!-- Stilovi za prikaz grafa -->
     <style>
         #graph {
@@ -12,10 +13,45 @@
     </style>
 </head>
 <body>
+    <div>
+    <p class = "link"><a href="{{url_for('index')}}">Nazad</a></p>
+    </div>
     <!-- Mjesto gdje će se prikazati graf -->
+    <div class = "flex-container">
     <div id="graph">
         <!-- Ovdje će se umetnuti HTML kod za graf -->
         {{ graph_html|safe }}
+    </div>
+    {% if id_ovlasti == 1 %}
+        <div id = "tableContainer">
+            
+            <table>
+                <th>Komponente sustava</th>
+                <tr>
+                    <th>Naziv</th>
+                    <th>Vrijednost</th>
+                </tr>
+
+                <tr>
+                    <td>Motor</td>
+                    <td><img src="{{ url_for('static', filename='slike/motor.png') }}" alt="User" width="100px"></td>
+
+                </tr>
+
+                <tr>
+                    <td>L298n</td>
+                    <td><img src="{{ url_for('static', filename='slike/l298n.png') }}" alt="User" width="100px"></td>
+
+                </tr>
+
+                <tr>
+                    <td>LM35</td>
+                    <td><img src="{{ url_for('static', filename='slike/lm35.png') }}" alt="User" width="100px"></td>
+                </tr>
+            </table>
+
+        </div>
+    {% endif %}
     </div>
 </body>
 </html>

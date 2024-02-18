@@ -22,19 +22,19 @@
                     </div>
         
                 <div class="header-desno">
-                <img src="{{ url_for('static', filename='slike/icon.png') }}" alt="Kucica" width="100px">
+                
                 </div>
             </div>
             <nav>
                 <a href="{{ url_for('logout') }}">Logout</a>
                 <a href="?id=1">Temperatura</a>
+                <a href="{{ url_for('check_user_spec') }}">Statistika</a>
             </nav>
             <main>
                 <table>
                     <thead>
                         <th>Datum</th>                       
                         <th>{{ tip }}</th>
-                        <th><a href="{{ url_for('check_user_spec') }}">Statistika</a></th>
                     </thead>  
                             <tbody>
                                 {% for podatak in podaci %}
