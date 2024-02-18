@@ -11,6 +11,10 @@ body {
     background-repeat: no-repeat;
 }
 
+.graph {
+    margin-right: 20px;
+    
+}
 .link {
     
     position: absolute;
@@ -22,13 +26,16 @@ body {
 .flex-container {
     display: flex;
     flex-direction: row;
-    padding: 20px;;
+    padding: 20px;
     
 }
 a {
     color: white;
 }
 
+#tableContainer {
+    margin-left: 20px;
+}
 .side {
     color: white;
     padding: 20px;
